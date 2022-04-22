@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #f0f0f0;
+  min-height: 100vh;
+}
+
+body .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px;
+  position: fixed;
+  background-color: #303030;
+  width: 100%;
+  z-index: 10;
+}
+
+body .header .header__img {
+  width: 10%;
+}
+
+body .header .header__search {
+  outline: none;
+  background: transparent;
+  border: none;
+  width: 10%;
+}
+
+body .header .header__search-dialog {
+  width: 20%;
+}
+
+body .search__section {
+  background-color: #fece00;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 130px;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-bottom: 15px;
+  color: #fff;
+  -webkit-box-shadow: 0 0 5px #000;
+          box-shadow: 0 0 5px #000;
+}
+
+body .search__section .search__section-input-div {
+  height: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-shadow: 0 0 2px #000;
+}
+
+body .search__section .search__section-input-div .search__section-input {
+  height: 35px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+body .search__section .search__section-info-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15px 15px;
+  background-color: #be9900;
+  width: 20%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+body .search__section .search__section-info-div .search__section-img {
+  width: 10%;
+}
+
+body .search__section .search__section-info-div .search__section-info {
+  display: inline;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+body .search__section::after {
+  content: "BUSQUEDA AVANZADA";
+  position: absolute;
+  top: 250px;
+  left: 45vw;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px;
+  background-color: #fece00;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  text-shadow: 0 0 2px #000;
+  -webkit-box-shadow: 0 1px 2px #000;
+          box-shadow: 0 1px 2px #000;
+}
+
+body .container {
+  width: 60vw;
+  margin: auto;
+  margin-top: 50px;
+}
+
+body .container .container__img {
+  width: 5%;
+}
+
+body .container .container__title {
+  display: inline;
+}
+
+body .container .container__div-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 25px;
+  font-size: 2rem;
+}
+
+body .pokemon {
+  margin: auto;
+  margin-top: 50px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 25px;
+  gap: 25px;
+  width: 60vw;
+}
+
+body .pokemon .pokemon__info {
+  min-height: 200px;
+  max-width: 150px;
+}
+
+body .pokemon .pokemon__name {
+  text-transform: capitalize;
+}
+
+body .pokemon .pokemon__img {
+  width: 100%;
+  background-color: #e1e1e1;
+}
+/*# sourceMappingURL=styles.css.map */
