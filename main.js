@@ -120,6 +120,50 @@ input.addEventListener('keypress', (e) => {
 })
 
 
+const pokemonCardsCreator = (url) => {
+    const respuesta = fetch(url)
+    
+        const data = respuesta.then(respuesta => respuesta.json())
+
+            data.then(data => {
+                stats = data.stats.map(stat => {
+                    return [stat.base_stat, stat.stat.name]
+                })
+                pokemonCard = `
+                    <div class="pokemon__card">
+                        <img class="pokemon__card-img" src="${data.sprites.other['official-artwork'].front_default}">
+                        <div>
+                            <h5>N.°${fill(data.id, 4)}</h5>
+                            <h3 class="pokemon__card-name">${data.name}</h3>
+                            <div class="pokemon__card-types">
+                                ${tiposDePokemones(data.types)}
+                            </div>
+                            <div class="pokemon__card-details">
+                                <p class="pokemon__weight">${data.weight}</p>
+                                <div class="pokemon__stats">
+                                    ${stats[0][1]}: ${stats[0][0]}
+                                    ${stats[1][1]}: ${stats[1][0]}
+                                    ${stats[2][1]}: ${stats[2][0]}
+                                    ${stats[3][1]}: ${stats[3][0]}
+                                    ${stats[4][1]}: ${stats[4][0]}
+                                    ${stats[5][1]}: ${stats[5][0]}
+                                </div>
+                            </div>
+                            <button class="pokemon__card-close">Close</button>
+                        </div>
+                    </div>
+                `
+                pokemonProfileCard.innerHTML = pokemonCard
+                pokemonProfileCard.classList.toggle('show')
+                console.log(pokemonProfileCard.innerHTML)
+                const closeCardButton = document.querySelector('.pokemon__card-close')
+                closeCardButton.addEventListener('click', () => {
+                    pokemonProfileCard.classList.remove('show')
+                })
+        })
+}
+
+
 
 
 const cargarPokemones = async() => {
@@ -151,30 +195,7 @@ const cargarPokemones = async() => {
                             </div>
                             `
 
-                    pokemonCard += `
-                            <div class="pokemon__card">
-                                <img class="pokemon__card-img" src="${data.sprites.other['official-artwork'].front_default}">
-                                <h5>N.°${fill(data.id, 4)}</h5>
-                                <h3 class="pokemon__card-name">${data.name}</h3>
-                                <div class="pokemon__card-types">
-                                    ${tiposDePokemones(data.types)}
-                                </div>
-                                <div class="extra__data">
-                                    <p class="weight">${data.weight}</p>
-                                    <div class="stats">
-                                        ${stats[0][1]}: ${stats[0][0]}
-                                        ${stats[1][1]}: ${stats[1][0]}
-                                        ${stats[2][1]}: ${stats[2][0]}
-                                        ${stats[3][1]}: ${stats[3][0]}
-                                        ${stats[4][1]}: ${stats[4][0]}
-                                        ${stats[5][1]}: ${stats[5][0]}
-                                    </div>
-                                </div>
-                            </div>
-                        `
-
                     pokemonList.innerHTML = pokemons
-                    pokemonProfileCard.innerHTML = pokemonCard
                     
                 }).catch(error => {
                     console.log(error)
@@ -182,6 +203,18 @@ const cargarPokemones = async() => {
                     const pokemonesEnPantalla = document.querySelectorAll('.pokemon .pokemon__info')
                     let ultimoPokemon = pokemonesEnPantalla[pokemonesEnPantalla.length - 1]
                     observador.observe(ultimoPokemon)
+                    pokemonesEnPantalla.forEach(pokemons => {
+                        pokemons.addEventListener('click', (e) => {
+                            e.preventDefault()
+                            let pokemonName = e.currentTarget.querySelector('.pokemon__name').textContent
+                            for(let pokemon in datos.results){
+                                if(datos.results[pokemon].name.match(pokemonName)){
+                                    console.log(datos.results[pokemon].url)
+                                    pokemonCardsCreator(datos.results[pokemon].url)
+                                }
+                            }
+                        })
+                    })
                 })
                 
             })
@@ -202,5 +235,10 @@ const cargarPokemones = async() => {
         loader.classList.remove('loader')
     }
 }
+
+window.addEventListener('load', () => {
+    console.log('finished loading')
+})
+
 
 cargarPokemones()

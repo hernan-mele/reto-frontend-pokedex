@@ -136,26 +136,6 @@ body .search__section .search__section-info-div .search__section-info {
   font-size: 0.9rem;
 }
 
-body .search__section::after {
-  content: "BUSQUEDA AVANZADA";
-  position: absolute;
-  top: 250px;
-  left: 45vw;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 15px;
-  background-color: #fece00;
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  text-shadow: 0 0 2px #000;
-  -webkit-box-shadow: 0 1px 2px #000;
-          box-shadow: 0 1px 2px #000;
-}
-
 @media (max-width: 650px) {
   body .search__section {
     padding-top: 80px;
@@ -170,10 +150,6 @@ body .search__section::after {
   }
   body .search__section .search__section-info-div .search__section-info {
     font-size: 0.8rem;
-  }
-  body .search__section::after {
-    top: 200px;
-    left: 35vw;
   }
 }
 
@@ -233,6 +209,10 @@ body .pokemon {
 body .pokemon .pokemon__info {
   min-height: 250px;
   max-width: 200px;
+}
+
+body .pokemon .pokemon__info :hover {
+  cursor: pointer;
 }
 
 body .pokemon .pokemon__name {
@@ -349,13 +329,24 @@ body .pokemon .extra__data {
 }
 
 .pokemon__profile {
-  height: 1000px;
-  width: 1000px;
+  height: 600px;
+  width: 600px;
+  display: none;
+  margin-top: 500px;
 }
 
 .pokemon__card {
-  display: none;
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   top: 0;
   left: 0;
   right: 0;
@@ -363,7 +354,20 @@ body .pokemon .extra__data {
   margin: auto;
   height: 600px;
   width: 600px;
-  background-color: #000;
+  background-color: #0005;
+  color: #000;
+  font-size: 1.5rem;
+}
+
+.pokemon__card .pokemon__card-img {
+  position: absolute;
+  top: -200px;
+  left: 100px;
+  width: 60%;
+}
+
+.show {
+  display: block !important;
 }
 
 .loader {
