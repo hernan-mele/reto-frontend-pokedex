@@ -1,3 +1,7 @@
+$electric: #fece00;
+$grass: #00ff00;
+$poison: #f0f0f0;
+
 *{
     margin: 0;
     padding: 0;
@@ -16,7 +20,7 @@ body{
         background-color: #303030;
         width: 100%;
         z-index: 10;
-        
+
         .header__img{
             width: 10%;
         }
@@ -141,8 +145,8 @@ body{
         width: 60vw;
 
         .pokemon__info{
-            min-height: 200px;
-            max-width: 150px;
+            min-height: 250px;
+            max-width: 200px;
         }
 
         .pokemon__name{
@@ -153,5 +157,98 @@ body{
             width: 100%;
             background-color: #e1e1e1;
         }
+
+        .pokemon__info-types{
+            display: flex;
+            justify-content: space-around;
+
+            p{
+                display: inline;
+                margin-top: 15px;
+                padding: 2px 10px;
+                width: 40%;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .grass{
+                background-color: #62ac3b;
+                color: #fff,
+            }
+
+            .poison{
+                background-color: #ac3aab;
+                color: #fff;
+            }
+
+            .water{
+                background-color: #0000ff;
+                color: #fff;
+            }
+
+            .fire{
+                background-color: #ac5039;
+                color: #fff
+            }
+
+            .electric{
+                background-color: #cbc469;
+                color: #fff;
+            }
+            
+
+            
+        }
     }
+}
+
+
+@mixin animate($animation, $duration, $method, $times){
+    animation: $animation $duration $method $times;
+    -webkit-animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name){
+    @keyframes #{$name}{
+        @content;
+    }
+}
+
+
+
+.loader{
+    background: url('./img/pokeball.png') center / 30% no-repeat;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 150px;
+    margin: 0 auto;
+    
+    @include keyframes(spinning){
+        0%{
+            transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+        }
+
+        50%{
+            transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+        }
+
+        100%{
+            transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+}
+    }
+
+    @include animate(spinning, 1s, ease-in-out, infinite)
 }

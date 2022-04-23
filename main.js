@@ -4,6 +4,7 @@ let offset = 0
 
 const pokemonList = document.querySelector('.pokemon')
 const input = document.querySelector('.search__section-input')
+const loader = document.querySelector('.loader')
 
 let observador = new IntersectionObserver((entradas, observador) => {
     entradas.forEach(entrada => {
@@ -20,31 +21,52 @@ let observador = new IntersectionObserver((entradas, observador) => {
 
 const fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString()
 
+const tiposDePokemones = datos => {
+    console.log(datos.length)
+    if(datos.length === 1){
+        return `<p class="${datos[0].type.name}">${datos[0].type.name}</p>`
+    }else if(datos.length === 2){
+        return `<p class="${datos[0].type.name}">${datos[0].type.name}</p><p class="${datos[1].type.name}">${datos[1].type.name}</p>`
+    }
+}
+
 const filtrarPokemones = async(e) => {
 
+    loader.classList.add('loader')
     try{
         const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/${e}`)
     
         if(respuesta.status === 200){
             const datos = await respuesta.json()
+
     
             console.log(datos)
             pokemons = ''
             pokemons += `
             <div class="pokemon__info">
-                <img class="pokemon__img" src="${datos.sprites.front_default}">
+                <img class="pokemon__img" src="${datos.sprites.other['official-artwork'].front_default}">
                 <h5>N.º${fill(datos.id, 4)}</h5>
                 <h3 class="pokemon__name">${datos.name}</h3>
                 <div class="pokemon__info-types">
-                    
+                   ${tiposDePokemones(datos.types)}
                 </div>
             </div>`
+
+            pokemonList.innerHTML = pokemons
+        }else if(respuesta.status === 401){
+            alert('Pusiste la llave mal')
+        }else if(respuesta.status === 404){
+            alert('El Pokemon que buscas no existe')
+        }else{
+            alert('Hubo un error y no sabemos que paso')
         }
 
-        pokemonList.innerHTML = pokemons
     }
     catch(error){
         console.log(error)
+    }
+    finally{
+        loader.classList.remove('loader')
     }
 }
 
@@ -67,6 +89,8 @@ input.addEventListener('keypress', (e) => {
 
 
 const cargarPokemones = async() => {
+
+    loader.classList.add('loader')
     try{
         const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}/`)
 
@@ -86,10 +110,19 @@ const cargarPokemones = async() => {
             const pokemonesEnPantalla = document.querySelectorAll('.pokemon .pokemon__info')
             let ultimoPokemon = pokemonesEnPantalla[pokemonesEnPantalla.length - 1]
             observador.observe(ultimoPokemon)
+        }else if(respuesta.status === 401){
+            alert('Pusiste la llave mal')
+        }else if(respuesta.status === 404){
+            alert('El Pokemon que buscas no existe')
+        }else{
+            alert('Hubo un error y no sabemos que paso')
         }
     }
     catch(error){
         console.log(error)
+    }
+    finally{
+        loader.classList.remove('loader')
     }
 }
 
