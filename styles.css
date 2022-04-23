@@ -33,10 +33,22 @@ body .header .header__search {
   background: transparent;
   border: none;
   width: 10%;
+  cursor: pointer;
 }
 
 body .header .header__search-dialog {
   width: 20%;
+}
+
+body .header .header__search-engine {
+  position: absolute;
+  height: 50px;
+  width: 50%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  left: 40vw;
+  display: none;
 }
 
 body .search__section {
@@ -295,5 +307,9 @@ body .pokemon .pokemon__info-types .electric {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
   }
+}
+
+.filtros {
+  display: none;
 }
 /*# sourceMappingURL=styles.css.map */

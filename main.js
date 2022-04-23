@@ -5,6 +5,17 @@ let offset = 0
 const pokemonList = document.querySelector('.pokemon')
 const input = document.querySelector('.search__section-input')
 const loader = document.querySelector('.loader')
+const headerSearch = document.querySelector('.header__search')
+const headerSearchEngine = document.querySelector('.header__search-engine')
+
+headerSearch.addEventListener('click', () => {
+    if(headerSearchEngine.style.display === 'block'){
+        headerSearchEngine.style.display = 'none'
+    }else{
+        headerSearchEngine.style.display = 'block'
+    }
+})
+
 
 let observador = new IntersectionObserver((entradas, observador) => {
     entradas.forEach(entrada => {
@@ -22,7 +33,7 @@ let observador = new IntersectionObserver((entradas, observador) => {
 const fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString()
 
 const tiposDePokemones = datos => {
-    console.log(datos.length)
+
     if(datos.length === 1){
         return `<p class="${datos[0].type.name}">${datos[0].type.name}</p>`
     }else if(datos.length === 2){
@@ -40,7 +51,6 @@ const filtrarPokemones = async(e) => {
             const datos = await respuesta.json()
 
     
-            console.log(datos)
             pokemons = ''
             pokemons += `
             <div class="pokemon__info">
@@ -72,6 +82,22 @@ const filtrarPokemones = async(e) => {
 
 let nombre = []
 
+headerSearchEngine.addEventListener('keypress', (e) => {
+
+    console.log(e.key)
+
+    if(e.keyCode !== 13){
+        nombre.push(e.key)
+    }else if(e.keyCode === 13){
+        nombre = nombre.join("")
+        headerSearchEngine.value = ""
+        headerSearchEngine.textContent = ""
+        filtrarPokemones(nombre)
+        nombre = []
+    }
+
+})
+
 input.addEventListener('keypress', (e) => {
     
     if(e.keyCode !== 13){
@@ -88,6 +114,8 @@ input.addEventListener('keypress', (e) => {
 })
 
 
+
+
 const cargarPokemones = async() => {
 
     loader.classList.add('loader')
@@ -98,18 +126,32 @@ const cargarPokemones = async() => {
             const datos = await respuesta.json()
 
             datos.results.forEach(pokemon => {
-                pokemons += `
-                    <div class="pokemon__info">
-                        <img class="pokemon__img" src="${pokemon.url}">
-                        <h3 class="pokemon__name">${pokemon.name}</h3>
-                    </div>
-                `
-            })
-            pokemonList.innerHTML = pokemons
+                const res = fetch(pokemon.url)
+                const data = res.then(response => response.json())
 
-            const pokemonesEnPantalla = document.querySelectorAll('.pokemon .pokemon__info')
-            let ultimoPokemon = pokemonesEnPantalla[pokemonesEnPantalla.length - 1]
-            observador.observe(ultimoPokemon)
+                data.then(data => {
+                    pokemons += `
+                            <div class="pokemon__info">
+                                <img class="pokemon__img" src="${data.sprites.other['official-artwork'].front_default}">
+                                <h5>N.º${fill(data.id, 4)}</h5>
+                                <h3 class="pokemon__name">${data.name}</h3>
+                                <div class="pokemon__info-types">
+                                ${tiposDePokemones(data.types)}
+                                </div>
+                            </div>
+                            `
+
+                    pokemonList.innerHTML = pokemons
+                }).catch(error => {
+                    console.log(error)
+                }).finally(() => {
+                    const pokemonesEnPantalla = document.querySelectorAll('.pokemon .pokemon__info')
+                    let ultimoPokemon = pokemonesEnPantalla[pokemonesEnPantalla.length - 1]
+                    observador.observe(ultimoPokemon)
+                })
+            })
+
+
         }else if(respuesta.status === 401){
             alert('Pusiste la llave mal')
         }else if(respuesta.status === 404){

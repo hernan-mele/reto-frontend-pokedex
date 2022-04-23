@@ -30,10 +30,20 @@ body{
             background: transparent;
             border: none;
             width: 10%;
+            cursor: pointer;
         }
 
         .header__search-dialog{
             width: 20%;
+        }
+
+        .header__search-engine{
+            position: absolute;
+            height: 50px;
+            width: 50%;
+            align-self: center;
+            left: 40vw;
+            display: none;
         }
     }
 
@@ -251,4 +261,8 @@ body{
     }
 
     @include animate(spinning, 1s, ease-in-out, infinite)
+}
+
+.filtros{
+    display: none;
 }
