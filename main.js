@@ -132,21 +132,22 @@ const pokemonCardsCreator = (url) => {
                 pokemonCard = `
                     <div class="pokemon__card">
                         <img class="pokemon__card-img" src="${data.sprites.other['official-artwork'].front_default}">
-                        <div>
+                        <div class="stats__div">
                             <h5>N.°${fill(data.id, 4)}</h5>
                             <h3 class="pokemon__card-name">${data.name}</h3>
                             <div class="pokemon__card-types">
                                 ${tiposDePokemones(data.types)}
                             </div>
+                            <p class="pokemon__weight">Weight: <span>${data.weight}</span></p>
                             <div class="pokemon__card-details">
-                                <p class="pokemon__weight">${data.weight}</p>
                                 <div class="pokemon__stats">
-                                    ${stats[0][1]}: ${stats[0][0]}
-                                    ${stats[1][1]}: ${stats[1][0]}
-                                    ${stats[2][1]}: ${stats[2][0]}
-                                    ${stats[3][1]}: ${stats[3][0]}
-                                    ${stats[4][1]}: ${stats[4][0]}
-                                    ${stats[5][1]}: ${stats[5][0]}
+                                <p class="stats__title">Stats</p>
+                                    <p>${stats[0][1]}: ${stats[0][0]}</p>
+                                    <p>${stats[1][1]}: ${stats[1][0]}</p>
+                                    <p>${stats[2][1]}: ${stats[2][0]}</p>
+                                    <p>${stats[3][1]}: ${stats[3][0]}</p>
+                                    <p>${stats[4][1]}: ${stats[4][0]}</p>
+                                    <p>${stats[5][1]}: ${stats[5][0]}</p>
                                 </div>
                             </div>
                             <button class="pokemon__card-close">Close</button>

@@ -324,10 +324,6 @@ body .pokemon .pokemon__info-types .unknown {
   background-color: #e6e6e6;
 }
 
-body .pokemon .extra__data {
-  display: none;
-}
-
 .pokemon__profile {
   height: 600px;
   width: 600px;
@@ -337,6 +333,11 @@ body .pokemon .extra__data {
 
 .pokemon__card {
   position: absolute;
+  top: 400px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -347,12 +348,7 @@ body .pokemon .extra__data {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  height: 600px;
+  height: 700px;
   width: 600px;
   background-color: #0005;
   color: #000;
@@ -364,6 +360,150 @@ body .pokemon .extra__data {
   top: -200px;
   left: 100px;
   width: 60%;
+}
+
+.pokemon__card .stats__div {
+  margin-top: 40%;
+  padding: 20px;
+}
+
+.pokemon__card .stats__div .pokemon__card-name {
+  text-transform: capitalize;
+  -webkit-text-decoration: underline #fff;
+          text-decoration: underline #fff;
+}
+
+.pokemon__card .stats__div h5 {
+  -webkit-text-decoration: underline #fff;
+          text-decoration: underline #fff;
+}
+
+.pokemon__card .stats__div .pokemon__card-types {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.pokemon__card .stats__div .pokemon__card-types p {
+  width: 40%;
+  text-align: center;
+  margin: 20px;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .grass {
+  background-color: #62ac3b;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .poison {
+  background-color: #ac3aab;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .water {
+  background-color: #0000ff;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .fire {
+  background-color: #ac5039;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .electric {
+  background-color: #cbc469;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .ground {
+  background-color: #ffb84d;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .fairy {
+  background-color: #99ff33;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .bug {
+  background-color: #006600;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .flying {
+  background-color: #666633;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .normal {
+  background-color: #3399ff;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .fighting {
+  background-color: #cc9900;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .psychic {
+  background-color: #b3b300;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .rock {
+  background-color: #999966;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .steel {
+  background-color: #b3b3b3;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .ghost {
+  background-color: #d9d9d9;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .ice {
+  background-color: #b3d9ff;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .dragon {
+  background-color: #ff0000;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .dark {
+  background-color: #333333;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .shadow {
+  background-color: #737373;
+}
+
+.pokemon__card .stats__div .pokemon__card-types .unknown {
+  background-color: #e6e6e6;
+}
+
+.pokemon__card .stats__div .pokemon__weight {
+  display: inline;
+  padding: 15px;
+  -webkit-text-decoration: underline #fff;
+          text-decoration: underline #fff;
+  word-spacing: 400px;
+}
+
+.pokemon__card .stats__div .pokemon__weight span {
+  text-align: center;
+}
+
+.pokemon__card .stats__div .pokemon__card-details {
+  padding: 10px;
+  word-spacing: 300px;
+  -webkit-text-decoration: underline #fff;
+          text-decoration: underline #fff;
+}
+
+.pokemon__card .stats__div .pokemon__card-close {
+  padding: 20px;
+  text-align: center;
+  background-color: #fece00;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  text-shadow: 0 0 2px #000;
+  border: none;
 }
 
 .show {
