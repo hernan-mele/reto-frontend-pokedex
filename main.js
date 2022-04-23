@@ -1,13 +1,16 @@
 let pokemons = ''
+let pokemonCard = ''
 let limit = 9
 let offset = 0
+let stats = []
 
 const pokemonList = document.querySelector('.pokemon')
 const input = document.querySelector('.search__section-input')
 const loader = document.querySelector('.loader')
 const headerSearch = document.querySelector('.header__search')
 const headerSearchEngine = document.querySelector('.header__search-engine')
-const pokemonProfile = document.querySelectorAll('.pokemon__info')
+const pokemonProfileCard = document.querySelector('.pokemon__profile')
+let pokemonsCards
 
 
 
@@ -133,6 +136,10 @@ const cargarPokemones = async() => {
                 const data = res.then(response => response.json())
 
                 data.then(data => {
+                    stats = data.stats.map(stat => {
+                        return [stat.base_stat, stat.stat.name]
+                    })
+                    
                     pokemons += `
                             <div class="pokemon__info">
                                 <img class="pokemon__img" src="${data.sprites.other['official-artwork'].front_default}">
@@ -144,7 +151,31 @@ const cargarPokemones = async() => {
                             </div>
                             `
 
+                    pokemonCard += `
+                            <div class="pokemon__card">
+                                <img class="pokemon__card-img" src="${data.sprites.other['official-artwork'].front_default}">
+                                <h5>N.°${fill(data.id, 4)}</h5>
+                                <h3 class="pokemon__card-name">${data.name}</h3>
+                                <div class="pokemon__card-types">
+                                    ${tiposDePokemones(data.types)}
+                                </div>
+                                <div class="extra__data">
+                                    <p class="weight">${data.weight}</p>
+                                    <div class="stats">
+                                        ${stats[0][1]}: ${stats[0][0]}
+                                        ${stats[1][1]}: ${stats[1][0]}
+                                        ${stats[2][1]}: ${stats[2][0]}
+                                        ${stats[3][1]}: ${stats[3][0]}
+                                        ${stats[4][1]}: ${stats[4][0]}
+                                        ${stats[5][1]}: ${stats[5][0]}
+                                    </div>
+                                </div>
+                            </div>
+                        `
+
                     pokemonList.innerHTML = pokemons
+                    pokemonProfileCard.innerHTML = pokemonCard
+                    
                 }).catch(error => {
                     console.log(error)
                 }).finally(() => {
@@ -152,6 +183,7 @@ const cargarPokemones = async() => {
                     let ultimoPokemon = pokemonesEnPantalla[pokemonesEnPantalla.length - 1]
                     observador.observe(ultimoPokemon)
                 })
+                
             })
 
 

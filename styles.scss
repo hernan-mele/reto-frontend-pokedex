@@ -316,7 +316,28 @@ body{
                 background-color: #e6e6e6;
             }
         }
+
+        .extra__data{
+            display: none;
+        }
     }
+}
+
+.pokemon__profile{
+    height: 1000px;
+    width: 1000px;
+}
+.pokemon__card{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 600px;
+    width: 600px;
+    background-color: #000;
 }
 
 
