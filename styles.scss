@@ -2,6 +2,8 @@ $electric: #fece00;
 $grass: #00ff00;
 $poison: #f0f0f0;
 
+
+
 *{
     margin: 0;
     padding: 0;
@@ -44,6 +46,16 @@ body{
             align-self: center;
             left: 40vw;
             display: none;
+        }
+
+        @media (max-width: 650px){
+            .header__img{
+                width: 15%;
+            }
+
+            .header__search-dialog{
+                width: 100%;
+            }
         }
     }
 
@@ -102,6 +114,7 @@ body{
             }
         
         }
+
     }
 
     .search__section::after{
@@ -119,6 +132,31 @@ body{
         -o-border-radius: 15px;
         text-shadow: 0 0 2px #000;
         box-shadow: 0 1px 2px #000;
+    }
+
+    @media (max-width: 650px){
+        .search__section{
+            padding-top: 80px;
+
+            .search__section-input-div{
+                width: 50%;
+                font-size: 0.9rem;
+            }
+            
+            .search__section-info-div{
+                padding: 10px 10px ;
+                width: 40% ;
+                
+                .search__section-info{
+                    font-size: 0.8rem ;
+                }
+            }
+        }
+
+        .search__section::after{
+            top: 200px;
+            left: 35vw;
+        }
     }
 
     .container{
@@ -139,6 +177,16 @@ body{
             align-items: center;
             margin-top: 25px;
             font-size: 2rem;
+        }
+
+        @media (max-width: 650px){
+            .container__img{
+                width: 10%;
+            }
+
+            .container__div-1{
+                justify-content: center;
+            }
         }
 
     }
@@ -176,38 +224,97 @@ body{
                 display: inline;
                 margin-top: 15px;
                 padding: 2px 10px;
-                width: 40%;
+                width: fit-content;
                 text-align: center;
                 text-transform: uppercase;
+                color: #fff;
             }
 
             .grass{
                 background-color: #62ac3b;
-                color: #fff,
+                
             }
 
             .poison{
                 background-color: #ac3aab;
-                color: #fff;
+                
             }
 
             .water{
                 background-color: #0000ff;
-                color: #fff;
+                
             }
 
             .fire{
                 background-color: #ac5039;
-                color: #fff
+                
             }
 
             .electric{
                 background-color: #cbc469;
-                color: #fff;
+                
+            }
+
+            .ground{
+                background-color: #ffb84d;
+            }
+
+            .fairy{
+                background-color: #99ff33;
+            }
+
+            .bug{
+                background-color: #006600;
+            }
+
+            .flying{
+                background-color: #666633;
+            }
+
+            .normal{
+                background-color: #3399ff;
+            }
+
+            .fighting{
+                background-color: #cc9900;
+            }
+
+            .psychic{
+                background-color: #b3b300;
+            }
+
+
+            .rock{
+                background-color: #999966;
+            }
+
+            .steel{
+                background-color: #b3b3b3;
+            }
+
+            .ghost{
+                background-color: #d9d9d9;
+            }
+
+            .ice{
+                background-color: #b3d9ff;
             }
             
+            .dragon{
+                background-color: #ff0000;
+            }
 
-            
+            .dark{
+                background-color: #333333;
+            }
+
+            .shadow{
+                background-color: #737373;
+            }
+
+            .unknown{
+                background-color: #e6e6e6;
+            }
         }
     }
 }
@@ -263,6 +370,3 @@ body{
     @include animate(spinning, 1s, ease-in-out, infinite)
 }
 
-.filtros{
-    display: none;
-}

@@ -7,6 +7,9 @@ const input = document.querySelector('.search__section-input')
 const loader = document.querySelector('.loader')
 const headerSearch = document.querySelector('.header__search')
 const headerSearchEngine = document.querySelector('.header__search-engine')
+const pokemonProfile = document.querySelectorAll('.pokemon__info')
+
+
 
 headerSearch.addEventListener('click', () => {
     if(headerSearchEngine.style.display === 'block'){
@@ -20,7 +23,7 @@ headerSearch.addEventListener('click', () => {
 let observador = new IntersectionObserver((entradas, observador) => {
     entradas.forEach(entrada => {
         if(entrada.isIntersecting){
-            offset +=9
+            offset += 9
             limit += 9
             cargarPokemones()
         }
